@@ -23,7 +23,7 @@ const FixedLink = styled(StyledLink)`
   right: 50px;
 `;
 export default function Home() {
-  const { data } = useSWR("/api/places", { fallbackData: [] });
+  const { data, mutate } = useSWR("/api/places", { fallbackData: [] });
 
   return (
     <>
