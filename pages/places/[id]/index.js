@@ -37,19 +37,25 @@ export default function DetailsPage() {
     data: { place, comments } = {},
     isLoading,
     error,
+    mutate,
   } = useSWR(`/api/places/${id}`);
 
   if (!isReady || isLoading || error) return <h2>Loading...</h2>;
 
-  function deletePlace() {
-    console.log("deleted?");
+  async function deletePlace() {
+    await fetch(`/api/places/${id}`, {
+      method: "DELETE",
+    });
+    // redirect to the home page
+    router.push("/");
   }
 
   return (
     <>
-      <Link href={'/'} passHref legacyBehavior>
+      <Link href={"/"} passHref legacyBehavior>
         <StyledLink justifySelf="start">back</StyledLink>
       </Link>
+
       <ImageContainer>
         <StyledImage
           src={place.image}
