@@ -23,6 +23,7 @@ export default function EditPage() {
     if (response.ok) {
       mutate();
     }
+    router.push(`/places/${id}`);
   }
 
   if (!isReady || isLoading || error) return <h2>Loading...</h2>;
