@@ -49,6 +49,7 @@ export default function DetailsPage() {
     // redirect to the home page
     router.push("/");
   }
+  console.log("data", place);
 
   return (
     <>
@@ -82,7 +83,12 @@ export default function DetailsPage() {
           Delete
         </StyledButton>
       </ButtonContainer>
-      <Comments locationName={place.name} comments={comments} />
+      <Comments
+        locationName={place.name}
+        comments={place.comments}
+        id={id}
+        mutate={mutate}
+      />
     </>
   );
 }
