@@ -45,6 +45,7 @@ export default function DetailsPage() {
   async function deletePlace() {
     await fetch(`/api/places/${id}`, {
       method: "DELETE",
+      body: JSON.stringify(id),
     });
     // redirect to the home page
     router.push("/");

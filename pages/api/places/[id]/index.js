@@ -16,6 +16,7 @@ export default async function handler(request, response) {
     if (!places) {
       return response.status(404).json({ status: "Not Found" });
     }
+    console.log("request", request);
     response.status(200).json({ place: places });
   }
 
@@ -43,7 +44,7 @@ export default async function handler(request, response) {
     }
   }
 
-  if (request.method === "DELETE") {
+  if (request.method === "DELETE" && request.body.id !== id) {
     await Places.findByIdAndDelete(id);
 
     response.status(200).json({ message: "success" });

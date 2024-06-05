@@ -34,6 +34,9 @@ export default function Comments({ locationName, comments, id, mutate }) {
       mutate();
     }
   }
+  async function deleteComment(id) {
+    console.log(id);
+  }
 
   return (
     <Article>
@@ -56,6 +59,7 @@ export default function Comments({ locationName, comments, id, mutate }) {
                   </small>
                 </p>
                 <span>{comment}</span>
+                <button onClick={() => deleteComment(_id)}>x</button>
               </>
             );
           })}
